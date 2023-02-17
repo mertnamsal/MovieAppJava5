@@ -1,5 +1,7 @@
 package com.bilgeadam.MovieAppJava5.service;
 
+import com.bilgeadam.MovieAppJava5.dto.request.UserRegisterRequestDto;
+import com.bilgeadam.MovieAppJava5.dto.response.UserRegisterResponseDto;
 import com.bilgeadam.MovieAppJava5.repository.IMovieRepository;
 import com.bilgeadam.MovieAppJava5.repository.IUserRepository;
 import com.bilgeadam.MovieAppJava5.repository.entity.User;
@@ -106,5 +108,21 @@ public class UserService {
     public Optional<User> findById(Long id) {
 
         return  userRepository.findById(id);
+    }
+    public UserRegisterResponseDto createUser(UserRegisterRequestDto dto){
+        User user = User.builder()
+                .name(dto.getName())
+                .surName(dto.getSurName())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .build();
+        User reUser = userRepository.save(user);
+        return UserRegisterResponseDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .surName(user.getSurName())
+                .userType(user.getUserType())
+                .email(user.getEmail())
+                .build();
     }
 }

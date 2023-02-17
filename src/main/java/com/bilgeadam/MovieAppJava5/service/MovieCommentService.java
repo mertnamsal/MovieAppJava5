@@ -31,4 +31,16 @@ public class MovieCommentService {
     public List<MovieComment> movieCommentBetweenDates(String name, String date1, String date2){
       return movieCommentRepository.movieCommentBetweenDates(name,LocalDate.parse(date1),LocalDate.parse(date2));
     }
+    public List<MovieComment> movieComments(Long id){
+      return  movieCommentRepository.moviecomments((id));
+    }
+    public List<MovieComment> usercommentsbetween(Long id, String date1, String date2){
+      return movieCommentRepository.usercommentsbetween(id,LocalDate.parse(date1),LocalDate.parse(date2));
+    }
+    public List<MovieComment> findAllByContentContainingIgnoreCase(String value){
+      return movieCommentRepository.findAllByContentContainingIgnoreCase(value);
+    }
+    public List<MovieComment> findByLength(Integer length){
+      return movieCommentRepository.findByLength(length);
+    }
 }

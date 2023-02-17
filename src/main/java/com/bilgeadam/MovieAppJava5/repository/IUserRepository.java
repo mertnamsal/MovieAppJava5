@@ -1,6 +1,7 @@
 package com.bilgeadam.MovieAppJava5.repository;
 
 import com.bilgeadam.MovieAppJava5.repository.entity.Movie;
+import com.bilgeadam.MovieAppJava5.repository.entity.MovieComment;
 import com.bilgeadam.MovieAppJava5.repository.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,4 +33,6 @@ public interface IUserRepository extends JpaRepository<User,Long> {
 
     @Query(value = "select u from User as u where length(u.password)>:x")
     List<User> passwordControl(@Param("x") int length);
+
+
 }

@@ -34,4 +34,21 @@ public class MovieCommentController {
     public ResponseEntity<List<MovieComment>> movieCommentBetweenDates(String name, String date1, String date2){
         return ResponseEntity.ok(movieCommentService.movieCommentBetweenDates(name,date1,date2));
     }
+
+    @GetMapping("/moviecomments")
+    public ResponseEntity<List<MovieComment>> movieComments(Long id){
+        return ResponseEntity.ok(movieCommentService.movieComments(id));
+    }
+    @GetMapping("/usercomments")
+    public ResponseEntity<List<MovieComment>> usercommentsbetween(Long id, String date1, String date2){
+        return ResponseEntity.ok(movieCommentService.usercommentsbetween(id,date1,date2));
+    }
+    @GetMapping("/cokguzel")
+    public ResponseEntity<List<MovieComment>> findAllByContentContainingIgnoreCase(String value){
+        return ResponseEntity.ok(movieCommentService.findAllByContentContainingIgnoreCase(value));
+    }
+    @GetMapping("/findbylength")
+    public ResponseEntity<List<MovieComment>> findByLength(Integer length){
+        return ResponseEntity.ok(movieCommentService.findByLength(length));
+    }
 }

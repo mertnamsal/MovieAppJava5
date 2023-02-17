@@ -1,5 +1,7 @@
 package com.bilgeadam.MovieAppJava5.controller;
 
+import com.bilgeadam.MovieAppJava5.dto.request.UserRegisterRequestDto;
+import com.bilgeadam.MovieAppJava5.dto.response.UserRegisterResponseDto;
 import com.bilgeadam.MovieAppJava5.repository.entity.User;
 import com.bilgeadam.MovieAppJava5.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+
 
 @RestController
 @RequestMapping("/user")
@@ -72,5 +76,10 @@ public class UserController {
     @GetMapping("/passwordcontrol2")
     public  ResponseEntity< List<User>> passwordControl(int length){
         return ResponseEntity.ok(userService.passwordControl(length));
+    }
+
+    @GetMapping("/register")
+    public ResponseEntity<UserRegisterResponseDto> createUser(UserRegisterRequestDto dto){
+        return ResponseEntity.ok(userService.createUser(dto));
     }
 }

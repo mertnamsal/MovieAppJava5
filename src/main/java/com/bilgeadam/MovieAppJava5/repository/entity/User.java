@@ -30,12 +30,10 @@ public class User {
     @Column(length = 32)
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Movie> favMovies;
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Genre> favGenres;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<MovieComment> comments;
     @Enumerated(EnumType.STRING)
     @Builder.Default
